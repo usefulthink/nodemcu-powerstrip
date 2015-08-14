@@ -1,0 +1,17 @@
+return {
+    -- networks this module will connect to. When booting the module will scan
+    -- all essids and connect to the first one found that is listed here.
+    SSID = {
+        YOUR_ESSID = "the WPA2 passphrase",
+        ANOTER_ESSID = "other passphrase"
+    },
+
+    -- the pins the relays are connected to (GPIO 14, 12, 13)
+    SOCKET_PINS = { 5, 6, 7 },
+
+    -- the number of LEDs
+    NUM_LEDS = 27,
+
+    -- http port
+    HTTP_PORT = 80
+};

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<h1>Powerstrip control</h1>
+
+<div><input id="s1" type="checkbox"><label for="s1">Socket 1</label></div>
+<div><input id="s2" type="checkbox"><label for="s2">Socket 2</label></div>
+<div><input id="s3" type="checkbox"><label for="s3">Socket 3</label></div>
+
+<script>
+function r(u, m, d, c) {
+  var r = new XMLHttpRequest();
+  r.open(m, u);
+  r.onreadystatechange = function() { if (r.readyState==4) { c(JSON.parse(r.responseText)); } };
+  r.send(JSON.stringify(d));
+}
+function s(socket, state, cb) {
+    r('/sockets', 'POST', {socket: socket, state:state});
+}
+document.addEventListener('click', function(e, t) {
+    t = e.target; if (!t.matches('input')) { return; }
+    s(+t.id.charAt(1), +t.checked);
+});
+</script>
